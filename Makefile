@@ -3,8 +3,9 @@ up:
 
 down:
 	podman-compose down
+	# podman stop laravel-dev-env laravel-mysql laravel-postgres
 
-shell:
+shell: up
 	podman exec -it laravel-dev-env /bin/sh
 
 build:
