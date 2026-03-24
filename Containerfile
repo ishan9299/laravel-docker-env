@@ -37,6 +37,15 @@ php85-bcmath \
 php85-pcntl \
 npm
 
+RUN git clone --depth=1 https://github.com/neovim/neovim /opt/nvim-src && \
+cd /opt/nvim-src && \
+cmake -S cmake.deps -B .deps -G Ninja -D CMAKE_BUILD_TYPE=RelWithDebInfo && \
+cmake --build .deps && \
+cmake -B build -G Ninja -D CMAKE_BUILD_TYPE=RelWithDebInfo && \
+cmake --build build && \
+cmake --install build && \
+rm -rf /opt/nvim-src
+
 # link php85 to php otherwise composer will not work.
 RUN ln -s /usr/bin/php85 /usr/bin/php
 
