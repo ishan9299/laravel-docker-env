@@ -9,6 +9,13 @@ services:
     network_mode: "host"
     volumes:
       - ./apps:/var/www:Z
+      # Mount your Neovim config from host
+      - ${HOME}/.config/nvim:/root/.config/nvim:Z
+      # Persist Mason installs across rebuilds (Mason re-downloads otherwise)
+      - ${HOME}/.local/share/nvim:/root/.local/share/nvim:Z
+      # tree sitter writes to it sometimes
+      - ${HOME}/.cache/nvim:/root/.cache/nvim:Z
+    stdin_open: true
     stdin_open: true
     tty: true
 
@@ -40,3 +47,5 @@ services:
 volumes:
   mysqldata:
   pgdata:
+  nvim-data:
+  nvim-cache:
