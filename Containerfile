@@ -1,7 +1,19 @@
 FROM alpine:3.23.3
 
+# it also includes packages for neovim
 RUN apk update && \
 apk add --no-cache \
+ninja \
+gcc \
+build-base \
+cmake \
+coreutils \
+curl \
+gettext-tiny-dev \
+linux-headers \
+ca-certificates \
+ripgrep \
+xz \
 git \
 php85 \
 php85-openssl \
