@@ -3,7 +3,8 @@ services:
     build:
       context: .
       tags:
-        - "laravel-dev"
+        - "laravel-dev-env"
+    image: laravel-dev-env
     container_name: laravel-dev-env
     network_mode: "host"
     volumes:
